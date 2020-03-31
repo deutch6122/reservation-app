@@ -17,9 +17,9 @@ class FakeDb {
       },
       {
         coverImage: './assets/img/phone-cover.jpg',
-        name: 'ローター（中挿れ可能）',
-        price: 50,
-        description: '性能評価1位獲得！！　あそこの奥にまで入り込む仕様で子宮に直接振動を与えることを可能にした商品です。',
+        name: 'iphon Mini',
+        price: 100,
+        description: '性能評価1位獲得！！使い易さNo.1の携帯をあなたの元へ',
         heading1: '使い心地',
         heading2: '気持ちよさ',
         heading3: 'コストパフォーマンス',
