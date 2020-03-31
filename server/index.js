@@ -1,9 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const config = require('./config/dev')
+const config = require('./config')
 const FakeDb = require('./fake-db')
 
 const productRoutes = require('./route/products')
+const path = require('path')
 
 // 直書きのことハードコーディングとも言う
 mongoose.connect(config.DB_URI, {
@@ -11,8 +12,10 @@ mongoose.connect(config.DB_URI, {
   useUnifiedTopology: true
 }).then(
   () => {
-    const fakeDb = new FakeDb()
-    fakeDb.initDb()
+    if(process.env.NODE_ENV !== 'production') {
+      const fakeDb = new FakeDb()
+      // fakeDb.initDb()
+    }
   }
 )
 
@@ -22,6 +25,15 @@ const app = express()
 
 // /api/v1/productへのアクセスでproductRoutesモジュールに移行。
 app.use('/api/v1/products', productRoutes)
+
+if(process.env.NODE_ENV === 'production') {
+  const appPath = path.join(__dirname, '..', 'dist', 'reservation-app')
+  app.use(express.static(appPath))
+  app.get("*", function(req, res) {
+    res.sendFile(path.resolve(appPath, 'index.html'))
+  })
+}
+
 
 // app.get('/products', function(req, res){
 //   res.json({'success': true})
