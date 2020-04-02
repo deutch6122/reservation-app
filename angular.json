@@ -29,6 +29,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -94,6 +97,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -125,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "reservation-app"
+    }
+  },
+  "defaultProject": "reservation-app",
+  "cli": {
+    "analytics": "36f75aff-ba66-485e-8f0a-541463c4c2ec"
+  }
 }
