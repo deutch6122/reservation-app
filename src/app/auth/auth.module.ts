@@ -5,6 +5,9 @@ import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { AuthService } from './shared/auth.service'
 import { FormsModule }   from '@angular/forms'
+import { AuthGuard } from './shared/auth.guard'
+import { TokenInterceptor } from './shared/token.intersepter'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,7 +25,13 @@ const routes: Routes = [
     FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: []
 })
